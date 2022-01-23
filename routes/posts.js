@@ -1,6 +1,7 @@
 import express from "express";
 import {
   getPosts,
+  getPostsBySearch,
   createPost,
   updatePost,
   deletePost,

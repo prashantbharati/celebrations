@@ -48,6 +48,22 @@ export const updatePost = async (req, res) => {
   res.json(updatedPost);
 };
 
+export const getPostsBySearch = async (req, res) => {
+  const { searchQuery, tags } = req.query;
+
+  try {
+    const title = new RegExp(searchQuery, "i");
+
+    const posts = await PostMessage.find({
+      $or: [{ title }, { tags: { $in: tags.split(",") } }],
+    });
+
+    res.json({ data: posts });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
 export const deletePost = async (req, res) => {
   const { id } = req.params;
 
