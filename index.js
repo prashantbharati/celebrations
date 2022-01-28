@@ -28,6 +28,7 @@ const CONNECTION_URL =
   "mongodb+srv://Shishir123:Shishir123@cluster0.14ymp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const PORT = 5000;
 
+//Returns a promise
 mongoose
   .connect(CONNECTION_URL, {
     useNewUrlParser: true,
