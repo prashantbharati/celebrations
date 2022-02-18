@@ -24,13 +24,12 @@ app.get("/", (req, res) => {
 });
 
 //Connecting server to the database
-const CONNECTION_URL =
-  "mongodb+srv://Shishir123:Shishir123@cluster0.14ymp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-const PORT = 5000;
+
+const PORT = process.env.PORT || 5000;
 
 //Returns a promise
 mongoose
-  .connect(CONNECTION_URL, {
+  .connect(process.env.CONNECTION_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
