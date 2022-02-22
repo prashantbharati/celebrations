@@ -14,8 +14,7 @@ export const getPosts = async (req, res) => {
       .sort({ _id: -1 })
       .limit(LIMIT)
       .skip(startIndex);
-
-    const postMessages = await PostMessage.find();
+    // We're simply fetching all the posts in a sorted fashion, from new to old, id==-1
 
     res.status(200).json(postMessages);
   } catch (error) {
