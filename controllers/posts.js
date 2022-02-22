@@ -16,7 +16,13 @@ export const getPosts = async (req, res) => {
       .skip(startIndex);
     // We're simply fetching all the posts in a sorted fashion, from new to old, id==-1
 
-    res.status(200).json(postMessages);
+    res
+      .status(200)
+      .json({
+        data: posts,
+        currentPage: Number(page),
+        numberOfPages: Math.ceil(total / LIMIT),
+      });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
