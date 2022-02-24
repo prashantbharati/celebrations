@@ -16,13 +16,11 @@ export const getPosts = async (req, res) => {
       .skip(startIndex);
     // We're simply fetching all the posts in a sorted fashion, from new to old, id==-1
 
-    res
-      .status(200)
-      .json({
-        data: posts,
-        currentPage: Number(page),
-        numberOfPages: Math.ceil(total / LIMIT),
-      });
+    res.status(200).json({
+      data: posts,
+      currentPage: Number(page),
+      numberOfPages: Math.ceil(total / LIMIT),
+    });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -72,6 +70,7 @@ export const getPostsBySearch = async (req, res) => {
       $or: [{ title }, { tags: { $in: tags.split(",") } }],
     });
 
+    // console.log(posts);
     res.json({ data: posts });
   } catch (error) {
     console.log(error);
