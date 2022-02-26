@@ -4,6 +4,7 @@ import PostMessage from "../models/postMessage.js";
 
 const router = express.Router();
 
+//getpost a single one
 export const getPost = async (req, res) => {
   const { id } = req.params;
 
@@ -16,6 +17,7 @@ export const getPost = async (req, res) => {
   }
 };
 
+// getposts, a list of them
 export const getPosts = async (req, res) => {
   const { page } = req.query;
   try {
