@@ -20,3 +20,4 @@ router.delete("/:id", auth, deletePost);
 router.patch("/:id/likePost", auth, likePost);
 
 export default router;
+// Though the routes setup but getpost search failed

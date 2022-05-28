@@ -16,7 +16,8 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 // Cors header
 app.use(cors());
 
-app.use("/posts", postRoutes); // Every route inside postroutes is gonna start with /posts...localhost5000/posts
+app.use("/posts", postRoutes);
+// Every route inside postroutes is gonna start with /posts...localhost5000/posts
 app.use("/user", userRouter);
 
 app.get("/", (req, res) => {
