@@ -107,6 +107,7 @@ export const likePost = async (req, res) => {
   const { id } = req.params;
 
   if (!req.userId) {
+    // coming from middle wares we now also have the userid
     return res.json({ message: "Unauthenticated" });
   }
 
@@ -115,7 +116,7 @@ export const likePost = async (req, res) => {
 
   const post = await PostMessage.findById(id);
 
-  const index = post.likes.findIndex((id) => id === String(req.userId));
+  const index = post.likes.findIndex((id) => id === String(req.userId)); // look for id in the backend
 
   if (index === -1) {
     post.likes.push(req.userId);

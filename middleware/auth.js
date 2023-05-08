@@ -10,13 +10,13 @@ const auth = async (req, res, next) => {
     let decodedData;
 
     if (token && isCustomAuth) {
-      decodedData = jwt.verify(token, secret);
+      decodedData = jwt.verify(token, secret); // gets us userid and name
 
       req.userId = decodedData?.id;
     } else {
       decodedData = jwt.decode(token);
 
-      req.userId = decodedData?.sub;
+      req.userId = decodedData?.sub; // sub helps google in differentiating every single google user
     }
 
     next();
